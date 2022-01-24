@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Array Imagenes</title>
+</head>
+<body>
+    <div id="miDiv">
+        <img id="imagen" src="" alt="foto" width=200 height=180></img>
+    </div>
+   
+    <br>
+    <input type="button" value="Iniciar" id="iniciar" onclick="a=setInterval(iniciar,1000);"/>
+     <input type="button" value="Parar" onclick="parar()"/>
+     <input type="button" value="Aumentar velocidad" id="aumentar" onclick="aumentar();"/>
+     <input type="button" value="Disminuir velocidad" id="disminuir" onclick="disminuir();"/>
+     <script>
+       
+     var array=["uno.jpg","dos.jpg","tres.jpg","cuatro.jpg"];
+     var posicion=0;
+    
+     function iniciar(){
+        document.getElementById("iniciar").disabled=true;
+         if(posicion!=array.length-1){
+        posicion=posicion+1;
+         document.getElementById("imagen").src=array[posicion]; 
+         }else{
+             posicion=0;
+            document.getElementById("imagen").src=array[posicion]; 
+         }
+    }
+    
+    function aumentar(){
+        document.getElementById("aumentar").disabled=true;
+        clearInterval(a);
+        a=setInterval(iniciar,-500);
+    }
+    function disminuir(){
+        document.getElementById("disminuir").disabled=true;
+        clearInterval(a);
+        a=setInterval(iniciar,+2000);
+    }
+    function parar(){
+        document.getElementById("iniciar").disabled=false;
+        document.getElementById("aumentar").disabled=false;
+        document.getElementById("disminuir").disabled=false;
+       
+        clearInterval(a);
+    }
+           document.getElementById("imagen").src=array[posicion];
+    </script>
+</body>
+</html>

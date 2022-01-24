@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    Nombre<input type="text" id="nombre"/>
+    <br/>
+    Primer apellido<input type="text" id="apellido1"/>
+    <br/>
+    Segundo apellido<input type="text" id="apellido2"/>
+    <br/>
+    <input type="button" value="Convertir" onclick="convertir();"/>
+<div id="miDiv"></div>
+<script>
+    function convertir(){
+        var texto="";
+        var nombre=document.getElementById("nombre").value;
+ var apellido1=document.getElementById("apellido1").value;
+ var apellido2=document.getElementById("apellido2").value;
+texto+=nombre+" "+apellido1+" "+apellido2;
+texto+="<br/>"+nombre.concat(apellido1,apellido2);
+    document.getElementById("miDiv").innerHTML=texto;
+    }
+</script>
+</body>
+
+</html>

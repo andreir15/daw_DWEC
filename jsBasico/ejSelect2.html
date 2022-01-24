@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio select 2</title>
+</head>
+<body>
+    <form name="miForm">
+    Introduzca texto:
+    <input type="text" id="textoId" name="texto" onkeyup="habilitar()">
+    <input type="button" value="Añadir" id="boton" onclick="agregar()">
+    <br>
+    <select name="selectIzq" size="4" multiple="multiple">
+        <option value="1">Opción 1 </option>
+        <option value="2">Opción 2 </option>
+        <option value="3">Opción 3 </option>
+    </select>
+    <input type="button" value=">>" onclick="mover()">
+    <input type="button" value="<<" onclick="mover(selectIzq,selectDer)">
+    <input type="button" value=">>|" onclick="moverTodo()">
+    <input type="button" value="|<<" onclick="moverTodo()">
+    <input type="button" value="X1" onclick="borrarTodo()">
+    <input type="button" value="X2" onclick="borrarTodo()">
+    <select name="selectDer" size="4" multiple="multiple">
+    </select>    
+    <br>
+    <input type="button" value="Copiar a la Derecha" onclick="copiar()">
+    <input type="button" value="Copiar a la Izquierda" onclick="copiar()">
+<br>
+<input type="button" value="Borrar de la Derecha" onclick="borrar()">
+<input type="button" value="Borrar de la Derecha" onclick="borrar()">
+
+</form>
+    <script>
+    document.getElementById("boton").disabled=true;
+    function habilitar(){
+        document.getElementById("boton").disabled=false;
+    }
+        function agregar(){
+            var texto=document.getElementById("textoId").value;
+            document.miForm.selectIzq.appendChild(new Option(texto,texto+"Value","",""));
+            document.getElementById("boton").disabled=true;
+            document.getElementById("textoId").value="";
+        }
+        function mover(selectMov,selectBorrar){
+         var elementos=selectBorrar.options.length;
+         for(i=elementos-1;i>=0;i--){
+             var miOpcion=new Option(selectBorrar.options[i].text,selectBorrar.options[i].value);
+             selectMov.options[selectMov.options.length]=miOpcion;
+             selectBorrar.options[i]=null;
+            }
+
+        }
+        function moverTodo(selectMov,selectBorrar){
+         var elementos=selectBorrar.options.length;
+         for(i=elementos-1;i>=0;i--){
+             var miOpcion=new Option(selectBorrar.options[i].text,selectBorrar.options[i].value);
+            
+             selectBorrar.options[i]=null;
+            }
+
+        }
+        function borrar(selectMov,selectBorrar){
+         var elementos=selectBorrar.options.length;
+         for(i=elementos-1;i>=0;i--){
+             var miOpcion=new Option(selectBorrar.options[i].text,selectBorrar.options[i].value);
+             selectMov.options[selectMov.options.length]=miOpcion;
+             selectBorrar.options[i]=null;
+            }
+
+        }
+        function borrarTodo(){
+         
+        form.options.length=null;
+         
+        }
+       
+    
+
+    
+    </script>
+</body>
+</html>

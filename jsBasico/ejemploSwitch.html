@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ejemplo Switch</title>
+</head>
+<body>
+Dime una marca de coche
+<input type="text" id="coche"/><br><br>
+<input type="button" value="Mostrar" onclick="mostrar();"/><br><br>
+   <div id="miDiv"></div>
+<script>
+function mostrar(){
+ var a=(document.getElementById("coche").value);
+    var texto="";
+switch(a.toLowerCase()){
+
+case "ford":texto="talleres Velasco" ;break;
+case "citroen":texto="talleres Doctor Esquerdo" ;break;
+case "peugeot":texto="talleres Las Acacias" ;break;
+default:texto="no trabajamos con esa marca" ;break;
+}document.getElementById("miDiv").innerHTML=texto;
+}
+</script>
+
+</body>
+
+
+
+</html>

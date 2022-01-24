@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Movimiento de letras</title>
+</head>
+<body>
+    Texto: <input type="text" id="texto" /><br/>
+    <input type="button" id="giraIzq" value="Gira Izquierda" onclick="izquierda();"/>
+    <input type="button" id="giraDer" value="Gira Derecha" onclick="derecha();"/>
+    <div id="miDiv"></div>
+    <script>
+        var texto="";
+        var var1="";
+        var var2="";
+        var posicion=0;     
+    function derecha(){
+            var text=document.getElementById("texto").value;
+            clearInterval(var1);
+            clearInterval(var2);
+            var2=setInterval(imprimeDerecha,1000);
+        }
+        function imprimeDerecha(){
+    document.getElementById("miDiv").innerHTML=text;
+var c=text.charAt(0);
+text=text.substring(1,text.length)+c;
+        }
+        function izquierda(){
+            text=document.getElementById("texto").value;
+            clearInterval(var1);
+            clearInterval(var2);
+            var1=setInterval(imprimeIzq,1000);
+        }
+        function imprimeIzq(){
+            var c=text.charAt(text.length-1);
+text+=c+text.substring(0,text.length-1);
+        }
+        function pararDer(){
+            clearInterval(var1);
+        }
+        function pararIzq(){
+            clearInterval(var2);
+        }
+        
+    </script>
+</body>
+</html>

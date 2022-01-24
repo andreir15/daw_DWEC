@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Ventana Nombre</title>
+</head>
+<body>
+    Nombre:<input type="text" id="nombre"/>
+    <input type="button" value="Enviar" onclick="abrir();"/>
+    <script>
+        var ventana;
+        
+    function abrir(){
+        var nombre=document.getElementById("nombre").value;
+       ventana=window.open("","ventana","width=200,height=200,top=150,left=150");
+       ventana.document.open();
+       ventana.document.write("Nombre<input type='text' value='"+nombre+"' disabled='disabled'/>"); 
+       ventana.document.write("<button onclick='window.close()'>Aceptar</button>");    
+       ventana.document.close(); 
+    }
+    </script>
+</body>
+</html>

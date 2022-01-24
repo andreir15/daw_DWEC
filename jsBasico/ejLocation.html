@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Location</title>
+</head>
+<body>
+   
+    <script>
+     document.write("URL completa: "+location.href+"<br/>");
+     document.write("Pathname: "+location.pathname+"<br/>");
+     document.write(" Protocolo: "+location.protocol+"<br/>");
+     document.write("Puerto: "+location.port+"<br/>");
+     document.write("Servidor: "+location.host+"<br/>");
+     document.write("Host Name: "+location.hostname+"<br/>");
+    function recargar(){
+        location.reload();
+    }
+    function redireccionar(){
+     location.href="https://www.google.com/";
+    }
+    function reemplazar(){
+        location.replace("https://www.nasa.gov/");
+    }
+    </script>
+     <input type="button" value="Recargar" onclick="recargar();"/>
+     <input type="button" value="Redireccionar" onclick="redireccionar();"/>
+     <input type="button" value="Reemplazar pagina" onclick="reemplazar();"/>
+    </body>
+</html>

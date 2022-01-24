@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio fechas 2</title>
+</head>
+<body>
+    Año:
+    <input type="text" id="anio"/><br/>
+    Mes:
+    <input type="text" id="mes"/><br/>
+    Dia:
+    <input type="text" id="dia"/><br/>
+<input type="button" value="Calcular" onclick="calcular();"/>
+<var id="miDiv"></var>
+    
+    <script>
+        //Pedir año, mes, dia por pantalla y calcular su edad.
+        function calcular(){
+var anio=parseInt(document.getElementById("anio").value);
+var mes=parseInt(document.getElementById("mes").value);
+var dia=parseInt(document.getElementById("dia").value);
+var texto="";
+var fechaHoy=new Date();
+var diffMes=(fechaHoy.getMonth()-mes);
+var diffDia=(fechaHoy.getDay()-dia);
+var edad=(fechaHoy.getFullYear()-anio);
+if(diffMes<0){
+edad;
+}
+else if(diffMes==0){
+    if(diffDia>=0){
+        edad;
+    }else{
+        edad=(fechaHoy.getFullYear()-(anio+1));
+}
+    }
+else{
+    edad=(fechaHoy.getFullYear()-(anio+1));
+}
+texto="El usuario tiene "+edad+" años";
+document.getElementById("miDiv").innerHTML=texto;
+        }
+        </script>
+</body>
+</html>

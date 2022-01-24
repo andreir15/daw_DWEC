@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ejercicio Switch</title>
+</head>
+<body>
+Dime la edad del jugador:
+<input type="text" id="edad"/><br><br>
+<input type="button" value="Mostrar" onclick="mostrar();"/><br><br>
+   <div id="miDiv"></div>
+<script>
+function mostrar(){
+ var a=parseInt(document.getElementById("edad").value);
+    var texto="";
+switch(a){
+case 5:
+case 6:
+case 7:texto="Pre Benjamin" ;break;
+case 8:
+case 9:texto="Benjamin" ;break;
+case 18:
+case 17:
+case 16:texto="Juvenil" ;break;
+case 11:
+case 10:texto="Alevin" ;break;
+case 14:
+case 15:texto="Cadete" ;break;
+case 13:
+case 12:texto="Infantil" ;break;
+default:texto="Fuera de categoria" ;break;
+}document.getElementById("miDiv").innerHTML=texto;
+}
+</script>
+<!--Truco profe que no es muy recomendable
+switch(true){
+    case(a<7):texto="El compuesto es ácido";break;
+    case(a>7):texto="El compuesto es basico";break;
+    deafult :texto="El compuesto es neutro";
+}
+
+-->
+</body>
+
+
+
+</html>

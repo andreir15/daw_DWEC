@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    Introduce el nombre de una ciudad
+    <input type="text" id="ciudad"/>
+    <br/>
+    <input type="button" value="Comprobar" onclick="comprobar();"/>
+    <div id="miDiv"></div>
+    <script>
+      
+        function comprobar(){
+        var contador=0;
+            var texto="";
+            var ciudad=document.getElementById("ciudad").value;
+        var ciudades=["madrid","barcelona","sevilla","bilbao"];
+        
+            for(i=0;i<=ciudades.length;i++){
+            if(ciudad.toLowerCase()==ciudades[i]) {
+              texto+="La ciudad introducida es "+ ciudad;  
+              }
+          else{
+             contador++;
+             if(contador>ciudades.length){
+    texto+="La ciudad introducida no es correcta";
+}
+          }
+            }
+            document.getElementById("miDiv").innerHTML=texto;
+        }
+    </script>
+</body>
+</html>

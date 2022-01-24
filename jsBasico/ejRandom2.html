@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numeros aleatorios 2</title>
+</head>
+<body>
+    Nº Elementos<input type="text" id="elementos"/><br/>
+  Menor<input type="text" id="menor"/><br/>
+  Mayor <input type="text" id="mayor"/>
+  <input type="button" value="Generar" onclick="calcular();"/>
+  <div id="miDiv"></div>
+  <script>
+      
+      
+      function calcular(){
+        var texto="";
+          var elementos=parseInt(document.getElementById("elementos").value);
+      var menor=parseInt(document.getElementById("menor").value);
+      var mayor=parseInt(document.getElementById("mayor").value);
+     var misNumeros=[];
+     var existe=false;
+     misNumeros.length=elementos;
+     texto+="Array generado= ";
+     
+        for(i=1;i<=elementos;i++){
+var num=Math.floor((Math.random()*(mayor-menor+1))+menor);
+
+for(j=0;j<misNumeros.length-1;j++){
+    if(misNumeros[j]==num){
+      existe=true;  
+    }
+}
+if(!existe||misNumeros.length==0){
+misNumeros[misNumeros.length]=num;
+       
+} texto+=num+", ";
+        }
+document.getElementById("miDiv").innerHTML=texto;
+      }
+  </script>
+</body>
+</html>
+<!--Solucion del profe
+if(min>max){
+    i=min;
+    min=max;
+    max=i;
+}
+if(num>max-min+1){
+    document.innerHTML="la cantidad es mayor que la diferencia de menor y mayor"
+}
+do{
+    var existe=false;
+    var res=math.floor...
+for(i=0;i<num.length-1;i++){
+    if (numeros[i]==res){
+        existe=true;
+    }
+}
+if (!existe||numeros.length==0){
+numeros[numeros.length]==res;
+}
+}
+-->

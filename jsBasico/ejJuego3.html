@@ -1,0 +1,35 @@
+<!--Introducir un numero por pantalla y que ponga si es numero primo o no-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego 3</title>
+</head>
+<body>
+    Introduzca un número:
+    <input type="text" id="num"/>
+    <input type="button" value="Evaluar" onclick="calcular();"/>
+    <div id="miDiv"></div>
+    <script>
+function calcular(){
+var a=parseInt(document.getElementById("num").value);
+var texto="";
+cont=0;
+for(i=0;i<=a;i++){
+    if(a%i==0){
+cont++;
+
+if(cont>2){
+texto="El numero " +a+" no es primo";
+}else{
+   texto="El numero " +a+" es primo";  
+}
+    }
+}document.getElementById("miDiv").innerHTML=texto;
+}
+    </script>
+ 
+</body>
+</html>

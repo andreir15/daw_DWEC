@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Mover Ventana</title>
+</head>
+<body>
+    <input type="button" value="Mover" onclick="mover();"/>
+    <input type="button" value="Redimensionar" onclick="redimensionar();"/>
+    <input type="button" value="Mover y redimensionar" onclick="moveryRedim();"/>
+    <input type="button" value="Mover hasta" onclick="moverHasta();"/>
+    Valor de X:<input type="text" id="valorX"/>
+    Valor de Y:<input type="text" id="valorY"/>
+    <script>
+     var ventana1;
+    var ventana2;
+    var ventana3;
+    var ventana4;
+     function mover(){       
+         ventana1=window.open("","ventana1","width=200,height=200,top=0,left=0");
+         for(var i=0;i<=300;i++){
+         ventana1.moveTo(i,i);
+     }
+     window.setTimeout("ventana1.close()",4000);
+;
+    }
+    function redimensionar(){       
+         ventana2=window.open("","ventana2","width=150,height=150,top=0,left=0");
+         for(i=0;i<500;i++){
+         ventana2.resizeTo(i,i);
+     }
+     window.setTimeout("ventana2.close()",4000);
+
+    }
+    function moveryRedim(){       
+         ventana3=window.open("","ventana3","width=150,height=150,top=0,left=0");
+         for(var i=0;i<=300;i++){
+         ventana3.moveTo(i,i);
+         ventana3.resizeTo(i,i);
+     }
+     window.setTimeout("ventana3.close()",4000);
+    }
+    function moverHasta(){
+        var valorX=parseInt(document.getElementById("valorX").value);
+        var valorY=parseInt(document.getElementById("valorY").value);
+         ventana4=window.open("","ventana1","width=200,height=200,top="+valorX+",left="+valorY);
+         window.setTimeout("ventana4.close()",4000);
+    }
+    </script>
+</body>
+</html>

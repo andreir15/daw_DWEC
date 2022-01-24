@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10</title>
+</head>
+<body>
+    Inserte una frase: <input type="text" id="frase"/>
+    <br/>
+    <input type="button" value="Verificar" onclick="calcular();"/>
+    <div id="miDiv"></div>
+    <script>
+     
+     function calcular(){
+        var frase=document.getElementById("frase").value;
+        var texto="";
+        var frase2 = frase.toLowerCase();
+        var palabras=frase2.split("");
+        var guardar="";
+        for(i=0;i<palabras.length;i++){
+          if(palabras[i]!=" "){
+           guardar+=palabras[i];
+
+          }
+        }
+        var palindromo=guardar.split("");
+        var reverso=guardar.split("").reverse();
+        for(i=0;i<palindromo.length;i++){
+            if(palindromo[i]==reverso[i]){
+                texto="Es un palindromo";
+         
+            }
+            else{
+                texto="NO es un palindromo";
+                
+            }
+        }
+
+  document.getElementById("miDiv").innerHTML=texto;
+}
+
+
+     
+    </script>
+</body>
+</html>

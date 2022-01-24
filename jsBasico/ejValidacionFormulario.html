@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio validacion formulario</title>
+</head>
+<body>
+    <form name="login" >
+    Matricula:
+    <input type="text" id="matricula" onkeyup="validar('matricula',/^\d{4}\-[^aeiouéáíúó]{3}$/)">
+    <br>
+    <br>
+    Teléfono:
+    <input type="text" id="telefono" onkeyup="validar('telefono',/^[6-9]\d\-\d{3}\-\d{2}\-\d{2}$/)">
+    <br>
+    <br>
+    Código postal:
+    <input type="text" id="cp" onkeyup="validar('cp',/^\d{5}$/)">
+    <br> 
+    <br>
+    Nombre:
+    <input type="text" id="nombre" onkeyup="validar('nombre',/^[A-Za-záéíóúçñÁÉÍÚÓÇÑ]{2}[A-Za-záéíóúçñÁÉÍÚÓÇÑ -]{0,18}$/)">
+    <br>
+    <br>
+    URL:
+    <input type="text" id="url" onkeyup="validar('url',/^((http)?s?\:?(\/\/)?)?[a-z]{1,}(\.[a-z]{2,})+$/)">
+    <br>
+    <br>
+    <input type="button" value="Añadir" id="botonId" onclick="enviar()">
+    <br>
+    <br>
+    <textarea name="miTextarea" cols="50" rows="15"></textarea>
+</form>
+<script>
+     var errores=0;
+     document.getElementById("botonId").disabled=true;
+     
+     function validar(valor,validacion){
+        var validarMatricula=validacion;
+        var matricula=document.getElementById(valor).value;
+        if(validarMatricula.test(matricula)){
+            document.getElementById(valor).style.color="blue";
+        }
+        else{
+        document.getElementById(valor).style.color="red";
+            
+    }
+    if(document.getElementById("cp").style.color=="blue"&&document.getElementById("matricula").style.color=="blue"&&document.getElementById("telefono").style.color=="blue"&&document.getElementById("nombre").style.color=="blue"&&document.getElementById("url").style.color=="blue"){
+            document.getElementById("botonId").disabled=false;
+        }else{
+            document.getElementById("botonId").disabled=true;
+
+        }
+     }
+
+     /*
+     function validar2(){
+     
+        var validarMatricula=/^\d{4}[-][B-DF-HJ-NP-TV-Zb-df-hj-np-tv-z]{3}$/;
+        var matricula=document.getElementById("matricula").value;
+        if(validarMatricula.test(matricula)){
+            document.getElementById("matricula").style.color="blue";
+        }
+        else{
+        document.getElementById("matricula").style.color="red";
+            
+    }
+
+        var validarTlf=/^[6-9]\d\-\d{3}\-\d{2}\-\d{2}$/;
+        var tlf=document.getElementById("telefono").value;
+        if(validarTlf.test(tlf)){
+            document.getElementById("telefono").style.color="blue";
+        }
+        else{
+        document.getElementById("telefono").style.color="red";
+       
+       
+    }
+        var validarCP=/^\d{5}$/;
+        var cp=document.getElementById("cp").value;
+        if(validarCP.test(cp)){
+            document.getElementById("cp").style.color="blue";
+        }
+        else{
+        document.getElementById("cp").style.color="red";
+           
+       
+    }
+        var validarNombre=/^[A-Za-záéíóúçñÁÉÍÚÓÇÑ]{2}[A-Za-záéíóúçñÁÉÍÚÓÇÑ -]{0,18}$/;
+        var nombre=document.getElementById("nombre").value;
+        if(validarNombre.test(nombre)){
+            document.getElementById("nombre").style.color="blue";
+        }
+        else{
+        document.getElementById("nombre").style.color="red";
+       
+        
+    }
+        var validarUrl=/^((http)?s?\:?(\/\/)?)?[a-z]{1,}(\.[a-z]{2,})+$/;
+        var url=document.getElementById("url").value;
+        if(validarUrl.test(url)){
+            document.getElementById("url").style.color="blue";
+        }
+        else{
+        document.getElementById("url").style.color="red";
+         
+       
+    }
+        if(document.getElementById("cp").style.color=="blue"&&document.getElementById("matricula").style.color=="blue"&&document.getElementById("telefono").style.color=="blue"&&document.getElementById("nombre").style.color=="blue"&&document.getElementById("url").style.color=="blue"){
+            document.getElementById("botonId").disabled=false;
+        }else{
+            document.getElementById("botonId").disabled=true;
+
+        }
+}
+*/
+function enviar(){
+login.miTextarea.value="Matricula: "+document.getElementById("matricula").value+"\t Teléfono:"+document.getElementById("telefono").value+"\nCódigo Postal: "+document.getElementById("cp").value+"\t Nombre: "+document.getElementById("nombre").value+"\nURL: " +document.getElementById("url").value;
+}
+</script>
+</body>
+</html>

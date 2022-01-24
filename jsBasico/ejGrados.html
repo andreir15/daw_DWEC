@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Grados</title>
+</head>
+<body>
+   
+    <div id="miDiv"></div>
+    <script>
+  
+        var grados=360;
+        var texto="";
+       
+            for(var i=0;i<=grados;i+=10){
+                var radianes=(Math.PI*i)/180;
+                var sen=Math.sin(radianes);
+                var cos=Math.cos(radianes);
+                texto+="<table border='1'><th>Grados</th><th>Radianes</th><th>Seno</th><th>Coseno</th><tr><td>"+i+"</td><td>"+radianes.toPrecision(3)+"</td><td>"+sen.toPrecision(3)+"</td><td>"+cos.toPrecision(3)+"</td></tr></table>";
+              
+             document.getElementById("miDiv").innerHTML=texto;
+            }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Clase Persona</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Clase Persona</legend>    Nombre: <input type="text" id="nombre"/>
+        <div id="erroresDiv"></div>
+        <br>
+        Apellidos: <input type="text" id="apellidos"/>
+        <div id="erroresDiv2"></div>
+    
+    <br>
+    Dirección: <input type="text" id="direccion"/>
+    <div id="erroresDiv3"></div>
+    <br>
+    Fecha de nacimiento: <input type="text" id="fechaNacimiento"/>
+    <div id="erroresDiv4"></div>
+    <br>
+    
+    Genero: <input type="text" id="genero"/>
+    <div id="erroresDiv5"></div>
+    <br>
+    Código postal: <input type="number" id="cp" min="10000" max="99999"/>
+    <div id="erroresDiv6"></div>
+    <br>
+    <input type="button" value="|<<" id="primero" onclick="primerElemento();"/>
+    <input type="button" value="<" id="anterior" onclick="anterior();"/>
+    <input type="button" value=">" id="siguiente" onclick="siguiente();"/>
+    <input type="button" value=">>|" id="ultimo" onclick="ultimoElemento();"/> 
+    <br>
+    <br>
+    <input type="button" value="Validar" onclick="validar()"/>
+    <input type="button" value="Alta" onclick="aniadir()"/>
+    <input type="button" value="Baja" onclick="baja()"/>
+    <input type="button" value="Modificar" onclick="modificar()"/>
+    <br>
+    <br>
+    <input type="button" value="Listado de personas" onclick="ventana()"/>
+    <br>
+</fieldset>
+
+<div id="miDiv"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+    <script>
+        var tablaTexto="";
+        var tablaTexto2="";
+        var tablaTexto3="";
+        class Persona{
+            constructor(nombreP,apellidosP,direccionP,fechaNacimientoP,generoP,cpP) {
+         this._nombre = nombreP;
+         this._apellidos=apellidosP;
+         this._direccion=direccionP;
+         this._fechaNacimiento=fechaNacimientoP;
+         this._genero=generoP;
+         this._cp=cpP;
+         
+        }
+        get nombre() {
+         return this._nombre;
+        }
+        set nombre(x) {
+         this._nombre = x;
+        }
+        get apellidos() {
+         return this._apellidos;
+        }
+        set apellidos(x) {
+         this._apellidos = x;
+        }
+        get direccion() {
+         return this._direccion;
+        }
+        set direccion(x) {
+         this._direccion = x;
+        }
+        get fechaNacimiento() {
+         return this._fechaNacimiento;
+        }
+        set fechaNacimiento(x) {
+         this._fechaNacimiento = x;
+        }
+        get genero() {
+         return this._genero;
+        }
+        set genero(x) {
+         this._genero = x;
+        }
+        get cp() {
+         return this._cp;
+        }
+        set cp(x) {
+         this._cp = x;
+        }
+     titulo(){
+         if(this.genero.toLowerCase()=="masculino"){
+             return "Sr. ";
+         }
+         if(this.genero.toLowerCase()=="femenino"){
+             return "Sra. ";
+         }
+     }
+     edad(){
+         var fechaHoy=new Date();
+         var fechaSplit=this._fechaNacimiento.split("/");
+         var miFecha=new Date(fechaSplit[2],fechaSplit[1],fechaSplit[0]);
+         var anioActual=fechaHoy.getFullYear();
+         var mesActual=fechaHoy.getMonth()+1;
+         var diaActual=fechaHoy.getDate();
+         var diaNacimiento=miFecha.getDate();
+         var mesNacimiento=miFecha.getMonth()+1;
+         var anioNacimiento=miFecha.getFullYear();
+         var edad=anioActual-anioNacimiento;
+         if(mesActual<mesNacimiento){
+             edad--;
+         }
+         if(mesActual==mesNacimiento){
+             if(diaNacimiento>diaActual){
+                 edad--;
+             }
+         }
+         return edad;
+     }
+        
+        static listarPersonas(contenedor, ...tabla){
+           
+            tablaTexto+="<br><h3>listarPersonas</h3><table border='1'><tr><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Fecha de nacimiento</th><th>Edad</th><th>Género</th><th>Código Postal</th></tr>";
+        document.getElementById(contenedor).innerHTML=tablaTexto;
+		
+        for(var misPersonas of tabla){
+
+		tablaTexto+="<tr><td>"+misPersonas.titulo()+misPersonas.nombre+"</td><td>"+misPersonas.apellidos+"</td><td>"+misPersonas.direccion+"</td><td>"+misPersonas.fechaNacimiento+"</td><td>"+misPersonas.edad()+"</td><td>"+misPersonas.genero+"</td><td>"+misPersonas.cp+"</td>";
+            document.getElementById(contenedor).innerHTML=tablaTexto;
+        }
+        tablaTexto+="</tr></table><br>";
+        document.getElementById(contenedor).innerHTML=tablaTexto;
+    }
+	
+	listarUnaPersona(){
+	   tablaTexto2= "<br><h3>ListarUnaPersona</h3><table border='1'><tr><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Fecha de nacimiento</th><th>Edad</th><th>Género</th><th>Código Postal</th></tr> " +
+        "<tr><td>"+this.titulo()+this._nombre+"</td><td>"+this._apellidos+"</td><td>"+this._direccion+"</td><td>"+this._fechaNacimiento+"</td><td>"+this.edad()+"</td><td>"+this._genero+"</td><td>"+this._cp+"</td></tr></table><br>";	   
+        document.getElementById("miDiv").innerHTML+=tablaTexto2;
+    }
+
+}
+ 
+function aniadir(){
+    var nombreN=document.getElementById("nombre").value;
+var apellidosN=document.getElementById("apellidos").value;
+var generoN=document.getElementById("genero").value;
+var direccionN=document.getElementById("direccion").value;
+var fechaNacimientoN=document.getElementById("fechaNacimiento").value;
+var cpN=document.getElementById("cp").value;
+    misPersonas.push(new Persona(nombreN,apellidosN,direccionN,fechaNacimientoN,generoN,cpN));
+   tablaTexto3="<h3>ListarPersonas con nueva persona</h3><table border='1'><tr><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Fecha de nacimiento</th><th>Género</th><th>Código Postal</th></tr>";
+	misPersonas.forEach(element => tablaTexto3+="<tr><td>"+element._nombre+"</td><td>"+element._apellidos+"</td><td>"+element._direccion+"</td><td>"+element._fechaNacimiento+"</td><td>"+element._genero+"</td><td>"+element._cp+"</td>");
+    document.getElementById("div3").innerHTML=tablaTexto3;
+	}
+    document.getElementById("div2").innerHTML+="</tr></table><br>";
+    function validar(){
+validarNombre();
+validarApellidos();
+validarDireccion();
+validarFechaNacimiento();
+validarGenero();
+validarCP();
+    }
+    ///////////Nombre//////////
+    function validarNombre(){
+    var nombre=document.getElementById("nombre").value;
+    nombre=nombre.split(" ").join("");
+    var letras=/^['A-Z']+$/i;
+    var texto="";
+    if((nombre.length<=20)&&(nombre.length>=3)){
+        for(i=0;i<nombre.length;i++){
+          var  recorrerNombre=nombre.charAt(i);
+          switch(nombre.charAt(i)){
+                   case 'á': recorrerNombre="a" ;break;
+                   case 'é':  recorrerNombre="e";break;
+                   case 'í': recorrerNombre='i';break;
+                   case 'ó': recorrerNombre='o';break;
+                   case 'ú':  recorrerNombre='u';break;
+                   case 'ñ':  recorrerNombre='n';break;
+                   case 'ç':  recorrerNombre='c';break;
+               }
+           if(recorrerNombre.match(letras)){
+
+           }else{
+             texto="Hay un error en el caracter numero "+i+" del nombre";
+             document.getElementById("erroresDiv").style.color="red";
+           }
+       }
+      }
+    else if(nombre.length>20){
+        texto="Error: El número de caracteres del nombre tiene que ser menor de 25";
+        document.getElementById("erroresDiv").style.color="red";
+    }else if(nombre.length<3){
+        texto="Error: El número de caracteres del nombre tiene que ser mayor de 3";
+        document.getElementById("erroresDiv").style.color="red";
+    }
+    document.getElementById("erroresDiv").innerHTML=texto;
+}
+////////////Apellidos//////////////////////
+    function validarApellidos(){
+    var apellidos=document.getElementById("apellidos").value;
+    apellidos=apellidos.split(" ").join("");
+    var letras=/^['A-Z']+$/i;
+    var texto="";
+    if((apellidos.length<=30)&&(apellidos.length>=3)){
+        for(i=0;i<apellidos.length;i++){
+          var  recorrerApellidos=apellidos.charAt(i);
+          switch(apellidos.charAt(i)){
+                   case 'á': recorrerApellidos="a" ;break;
+                   case 'é':  recorrerApellidos="e";break;
+                   case 'í': recorrerApellidos='i';break;
+                   case 'ó': recorrerApellidos='o';break;
+                   case 'ú':  recorrerApellidos='u';break;
+                   case 'ñ':  recorrerApellidos='n';break;
+                   case 'ç':  recorrerApellidos='c';break;
+               }
+           if(recorrerApellidos.match(letras)){
+
+           }else{
+             texto="Hay un error en el caracter numero "+i+" de los apellidos";
+             document.getElementById("erroresDiv2").style.color="red";
+           }
+       }
+      }
+    else if(apellidos.length>30){
+        texto="Error: El número de caracteres del apellido tiene que ser menor de 25";
+        document.getElementById("erroresDiv2").style.color="red";
+    }else if(apellidos.length<3){
+        texto="Error: El número de caracteres del apellido tiene que ser mayor de 3";
+        document.getElementById("erroresDiv2").style.color="red";
+    }
+    document.getElementById("erroresDiv2").innerHTML=texto;
+}
+////////////////Direccion///////////////
+    function validarDireccion(){
+    var direccion=document.getElementById("direccion").value;
+    direccion=direccion.split(" ").join("");
+    var letras=/^['A-Z']+$/i;
+    var num=/['0-9']/i;
+    var texto="";
+    if((direccion.length<=35)&&(direccion.length>=3)){
+        for(i=0;i<direccion.length;i++){
+          var  recorrerDireccion=direccion.charAt(i);
+          switch(direccion.charAt(i)){
+                   case 'á': recorrerDireccion="a" ;break;
+                   case 'é':  recorrerDireccion="e";break;
+                   case 'í': recorrerDireccion='i';break;
+                   case 'ó': recorrerDireccion='o';break;
+                   case 'ú':  recorrerDireccion='u';break;
+                   case 'ñ':  recorrerDireccion='n';break;
+                   case 'ç':  recorrerDireccion='c';break;
+               }
+           if(recorrerDireccion.match(letras)||recorrerDireccion.match(num)){
+
+           }else{
+             texto="Hay un error en el caracter numero "+i;
+             document.getElementById("erroresDiv3").style.color="red";
+           }
+       }
+      }
+    else if(direccion.length>35){
+        texto="Error: El número de caracteres de la dirección tiene que ser menor de 25";
+        document.getElementById("erroresDiv3").style.color="red";
+    }else if(direccion.length<3){
+        texto="Error: El número de caracteres de la dirección tiene que ser mayor de 3";
+        document.getElementById("erroresDiv3").style.color="red";
+    }
+    document.getElementById("erroresDiv3").innerHTML=texto;
+
+}
+///////////Fecha////////////
+   function validarFechaNacimiento(){
+       var error=0;
+       var texto="";
+    var fechaHoy=new Date();
+    var fecha=document.getElementById("fechaNacimiento").value;
+    var fechaSplit=fecha.split("/");
+    var miFecha=new Date(fechaSplit[2],fechaSplit[1],fechaSplit[0]);
+         var anioActual=fechaHoy.getFullYear();
+         var mesActual=fechaHoy.getMonth()+1;
+         var diaActual=fechaHoy.getDate();
+         var diaNacimiento=miFecha.getDate();
+         var mesNacimiento=miFecha.getMonth()+1;
+         var anioNacimiento=miFecha.getFullYear();
+         if(anioActual<anioNacimiento){
+          error=1;
+         }
+         else{
+             if(mesActual<mesNacimiento){
+                 error=1;
+             }else{
+                 if(diaActual<diaNacimiento){
+                     error=1;
+                 }
+             }
+         }
+    if(error=1){
+        texto="Error: La fecha de nacimiento tiene que ser anterior a la actual";
+        document.getElementById("erroresDiv4").style.color="red";
+    }
+    document.getElementById("erroresDiv4").innerHTML=texto;
+}
+////////////Genero////////////////
+    function validarGenero(){
+    var genero=document.getElementById("genero").value;
+    genero=genero.toLowerCase();
+    var texto="";
+    if(genero=="masculino"||genero=="femenino"){
+    }
+    else{
+        texto="Error: El genero solo puede ser masculino o femenino";
+        document.getElementById("erroresDiv5").style.color="red";
+    }
+    document.getElementById("erroresDiv5").innerHTML=texto;
+}
+////////////CP/////////////
+    function validarCP(){
+    var cp=document.getElementById("cp").value;
+    var texto="";
+    if(cp>99999){
+        texto="Error: El número de caracteres del códidgo postal tiene que ser de 5 caracteres";
+        document.getElementById("erroresDiv6").style.color="red";
+    }else if(cp<10000){
+        texto="Error: El número de caracteres del códidgo postal tiene que ser de 5 caracteres";
+        document.getElementById("erroresDiv6").style.color="red";
+    }
+    document.getElementById("erroresDiv6").innerHTML=texto;
+
+}
+	
+        misPersonas=[];
+        misPersonas[0]=new Persona("Andrei Razvan","Olteanu","San Fernando de Henares","15/02/2002","Masculino",28830);
+        misPersonas[1]=new Persona("Pepe","Lopez Garcia","Coslada","25/06/1999","Masculino",28930);
+        misPersonas[2]=new Persona("Ana","Sanchez Muñoz","Madrid","08/08/1998","Femenino",29900);
+        misPersonas[3]=new Persona("Ruben","Yañez Rosingana","Eurovilla","27/03/1500","Masculino",25500);
+       misPersonas[0].listarUnaPersona();
+   Persona.listarPersonas("div2",misPersonas[0],misPersonas[1],misPersonas[2],misPersonas[3]);
+  //////////////Botones anterior y posterior////////////////////////   
+  var posicion=2;
+     function primerElemento(){
+    document.getElementById("nombre").value=misPersonas[0].nombre;
+    document.getElementById("apellidos").value=misPersonas[0].apellidos;
+    document.getElementById("direccion").value=misPersonas[0].direccion;
+    document.getElementById("fechaNacimiento").value=misPersonas[0].fechaNacimiento;
+    document.getElementById("genero").value=misPersonas[0].genero;
+    document.getElementById("cp").value=misPersonas[0].cp;
+     }
+     function ultimoElemento(){
+     document.getElementById("nombre").value=misPersonas[misPersonas.length-1].nombre;
+     document.getElementById("apellidos").value=misPersonas[misPersonas.length-1].apellidos;
+     document.getElementById("direccion").value=misPersonas[misPersonas.length-1].direccion;
+     document.getElementById("fechaNacimiento").value=misPersonas[misPersonas.length-1].fechaNacimiento;
+     document.getElementById("genero").value=misPersonas[misPersonas.length-1].genero;
+     document.getElementById("cp").value=misPersonas[misPersonas.length-1].cp;
+     }
+     function anterior(){
+       if(posicion!=0){
+           posicion=posicion-1;
+         document.getElementById("nombre").value=misPersonas[posicion].nombre;
+         document.getElementById("apellidos").value=misPersonas[posicion].apellidos;
+         document.getElementById("direccion").value=misPersonas[posicion].direccion;
+         document.getElementById("fechaNacimiento").value=misPersonas[posicion].fechaNacimiento;
+         document.getElementById("genero").value=misPersonas[posicion].genero;
+         document.getElementById("cp").value=misPersonas[posicion].cp;
+        
+       }
+       else{
+           posicion=misPersonas.length-1;
+           document.getElementById("nombre").value=misPersonas[posicion].nombre;
+         document.getElementById("apellidos").value=misPersonas[posicion].apellidos;
+         document.getElementById("direccion").value=misPersonas[posicion].direccion;
+         document.getElementById("fechaNacimiento").value=misPersonas[posicion].fechaNacimiento;
+         document.getElementById("genero").value=misPersonas[posicion].genero;
+         document.getElementById("cp").value=misPersonas[posicion].cp;
+       }
+     }
+     function siguiente(){
+            if(posicion!=misPersonas.length-1){
+           posicion=posicion+1;
+           document.getElementById("nombre").value=misPersonas[posicion].nombre;
+         document.getElementById("apellidos").value=misPersonas[posicion].apellidos;
+         document.getElementById("direccion").value=misPersonas[posicion].direccion;
+         document.getElementById("fechaNacimiento").value=misPersonas[posicion].fechaNacimiento;
+         document.getElementById("genero").value=misPersonas[posicion].genero;
+         document.getElementById("cp").value=misPersonas[posicion].cp;
+       }
+       else{
+           posicion=0;
+           document.getElementById("nombre").value=misPersonas[posicion].nombre;
+         document.getElementById("apellidos").value=misPersonas[posicion].apellidos;
+         document.getElementById("direccion").value=misPersonas[posicion].direccion;
+         document.getElementById("fechaNacimiento").value=misPersonas[posicion].fechaNacimiento;
+         document.getElementById("genero").value=misPersonas[posicion].genero;
+         document.getElementById("cp").value=misPersonas[posicion].cp;
+       }
+     }
+     ////////////////////////Ventana//////////////////////////////////
+     var miVentana;
+     function ventana() {
+         miVentana=window.open("","","width=500,height=500,top=0,left=0");
+         miVentana.document.open();
+         miVentana.document.write("<table border='1'><tr><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Fecha de nacimiento</th><th>Género</th><th>Código Postal</th></tr>");
+            for(var i=0;i<misPersonas.length;i++){
+                miVentana.document.write("<tr><td>"+misPersonas[i].nombre+"</td><td>"+misPersonas[i].apellidos+"</td><td>"+misPersonas[i].direccion+"</td><td>"+misPersonas[i].fechaNacimiento+"</td><td>"+misPersonas[i].genero+"</td><td>"+misPersonas[i].cp+"</td>");
+            }
+          miVentana.document.write("</tr></table>");
+          miVentana.document.write("<br><input type='button' value='Cerrar' onclick='window.close()'>")  
+         miVentana.document.close();
+     }
+
+     document.getElementById("nombre").value=misPersonas[posicion].nombre;
+         document.getElementById("apellidos").value=misPersonas[posicion].apellidos;
+         document.getElementById("direccion").value=misPersonas[posicion].direccion;
+         document.getElementById("fechaNacimiento").value=misPersonas[posicion].fechaNacimiento;
+         document.getElementById("genero").value=misPersonas[posicion].genero;
+         document.getElementById("cp").value=misPersonas[posicion].cp;
+        
+   
+    </script>
+</body>
+</html>

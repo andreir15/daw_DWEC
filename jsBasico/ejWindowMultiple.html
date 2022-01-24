@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Apertura multiple de ventanas</title>
+</head>
+<body>
+    Introducir top y left<input type="text" id="distancia"/>
+    <br>
+    <button onclick="abrir()">Pulse para abrir ventana</button>
+    <button onclick="cerrar()">Cerrar ventana</button>
+    
+    <script>
+        var ventana;
+        
+        function abrir(){
+         if((typeof(ventana)=="undefined")||(ventana.closed)){
+            var distancia=parseInt(document.getElementById("distancia").value);
+            ventana=window.open("","","width=300,height=300,top="+distancia+",left="+distancia);
+          ventana.document.open();
+          ventana.document.write("<button onclick='window.close()'>Cerrar ventana</button>");
+          window.setTimeout(cerrar,10000);
+          ventana.document.close();
+         }
+         else{
+           ventana.focus();
+         }
+        }  
+    
+        function cerrar(){
+            ventana.close();
+        }
+    </script>
+</body>
+</html>

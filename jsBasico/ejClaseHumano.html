@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Clase Humano</title>
+</head>
+<body>
+    Peso<input type="text"  id="peso"/>
+    Edad<input type="text"  id="edad"/>
+    <br>
+    <input type="button" value="|<<" id="primero" onclick="primerElemento();"/>
+     <input type="button" value="<" id="anterior" onclick="anterior();"/>
+     <input type="button" value=">" id="siguiente" onclick="siguiente();"/>
+     <input type="button" value=">>|" id="ultimo" onclick="ultimoElemento();"/>
+     <br>
+     <input type="button" value="Comer" onclick="comerF()"/>
+     <input type="button" value="Correr" onclick="correrF()"/>
+<input type="button" value="Añadir" onclick="añadir()"/>
+<br>
+<input type="button" value="Mostrar humanos" onclick="ventana()"/>
+
+<div id="div2"></div>
+<div id="div"></div>
+    <script>
+    class Humano{
+        constructor(anios,kilos) {
+         this._edad = anios;
+         this._peso=kilos;
+        }
+        get edad() {
+         return this._edad;
+        }
+        set edad(x) {
+         this._edad = x;
+        }
+        get peso() {
+         return this._peso;
+        }
+        set peso(y) {
+         this._peso = y;
+        }
+        static mostrarDatos(contenedor, ...tabla){
+	    document.getElementById(contenedor).innerHTML+="<br><h3>mostrarDatos<h3>";
+		for(var personas of tabla){
+		  document.getElementById(contenedor).innerHTML+="Peso= " +personas.peso+" kg-----------Edad= "+personas.edad+" años<br>";
+		}
+	}
+	
+	mostrarUnDato(){
+	   document.getElementById("div").innerHTML += "<br>MuestraUnDato= Peso= " +this._peso+" kg-----------Edad= "+this._edad+" años<br>";;	   
+	}
+    comer(){
+        return this._peso++;
+    }
+    correr(){
+        return this._peso--;
+    }
+}
+   
+    var personas=[];
+    personas[0]=new Humano(19,80);
+    personas[1]=new Humano(45,77);
+    personas[2]=new Humano(18,65);
+    personas[3]=new Humano(21,55);
+   // personas[0].mostrarUnDato();
+    Humano.mostrarDatos("div",personas[0],personas[1],personas[2],personas[3]);
+    /*personas[2].comer();
+    personas[2].mostrarUnDato();
+    personas[3].correr();
+    personas[3].mostrarUnDato();*/
+
+    ///////////////////Añadir persona////////////////////////////////
+function añadir(){
+	var nuevoPeso=parseInt(document.getElementById("peso").value);
+    var nuevaEdad=parseInt(document.getElementById("edad").value);
+    personas.push(new Humano(nuevaEdad,nuevoPeso));
+    document.getElementById("div2").innerHTML="<h3>MostrarDatos con nueva persona<h3>";
+	personas.forEach(element => document.getElementById("div2").innerHTML+="Peso= " +element._peso+" kg---------Edad= "+element._edad+" años<br>");
+		
+	}	
+     ///////////////Botones anterior y posteior//////////////////////
+     var posicion=2;
+     function primerElemento(){
+    document.getElementById("peso").value=personas[0].peso;
+    document.getElementById("edad").value=personas[0].edad;
+     }
+     function ultimoElemento(){
+     document.getElementById("peso").value=personas[personas.length-1].peso;
+    document.getElementById("edad").value=personas[personas.length-1].edad;
+     }
+     function anterior(){
+       if(posicion!=0){
+           posicion=posicion-1;
+         document.getElementById("peso").value=personas[posicion].peso;
+         document.getElementById("edad").value=personas[posicion].edad;
+        
+       }
+       else{
+           posicion=personas.length-1;
+           document.getElementById("peso").value=personas[posicion].peso;
+         document.getElementById("edad").value=personas[posicion].edad;
+       }
+     }
+     function siguiente(){
+            if(posicion!=personas.length-1){
+           posicion=posicion+1;
+           document.getElementById("peso").value=personas[posicion].peso;
+           document.getElementById("edad").value=personas[posicion].edad;
+       }
+       else{
+           posicion=0;
+           document.getElementById("peso").value=personas[posicion].peso;
+         document.getElementById("edad").value=personas[posicion].edad;
+       }
+     }
+     //////////////////Funciones comer y correr//////////////////
+     function comerF() {
+        personas[posicion].comer();
+        document.getElementById("peso").value=personas[posicion].peso;
+     }
+     function correrF() {
+        personas[posicion].correr();
+        document.getElementById("peso").value=personas[posicion].peso;
+     }
+     ////////////////////////Ventana//////////////////////////////////
+     var miVentana;
+     function ventana() {
+         miVentana=window.open("","","width=250,height=250,top=0,left=0");
+         miVentana.document.open();
+         miVentana.document.write("<table border='1'><tr><th>PESO</th><th>EDAD</th></tr>");
+            for(var i=0;i<personas.length;i++){
+                miVentana.document.write("<tr><td>"+personas[i].peso+"</td><td>"+personas[i].edad+"</td>");
+            }
+          miVentana.document.write("</tr></table>");
+          miVentana.document.write("<br><input type='button' value='Cerrar' onclick='window.close()'>")  
+         miVentana.document.close();
+     }
+    document.getElementById("peso").value=personas[posicion].peso;
+    document.getElementById("edad").value=personas[posicion].edad;
+    
+    </script>
+</body>
+</html>

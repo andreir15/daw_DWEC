@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Array Imagenes</title>
+</head>
+<body>
+    <input type="text" id="nombre"/>
+    <input type="button" value="Añadir" onclick="añadir();"/>
+    <br>
+    <br>
+    <div id="miDiv">
+        <img id="imagen" src="" alt="foto" width=200 height=180></img>
+    </div>
+   
+    <br>
+    <input type="button" value="|<<" id="primero" onclick="primerElemento();"/>
+     <input type="button" value="<" id="anterior" onclick="anterior();"/>
+     <input type="button" value=">" id="siguiente" onclick="siguiente();"/>
+     <input type="button" value=">>|" id="ultimo" onclick="ultimoElemento();"/>
+    <script>
+       
+     var array=["uno.jpg","dos.jpg","tres.jpg","cuatro.jpg"];
+     var posicion=2;
+    function primerElemento(){
+    var primero=array[0];
+    document.getElementById("imagen").src=primero;
+     }
+     function ultimoElemento(){
+    var ultimo=array[array.length-1];
+    document.getElementById("imagen").src=ultimo;
+     }
+     function anterior(){
+        if(posicion!=0){
+      posicion=posicion-1;
+         document.getElementById("imagen").src=array[posicion];
+       
+     }
+    }
+     function siguiente(){
+        if(posicion!=array.length-1){
+        posicion=posicion+1;
+         document.getElementById("imagen").src=array[posicion];
+       
+       }
+     }
+     
+     function añadir(){
+        var nombre=document.getElementById("nombre").value;
+         var nombreCompleto=nombre+".jpg";
+     array.push(nombreCompleto);
+     }
+           document.getElementById("imagen").src=array[posicion];
+    </script>
+</body>
+</html>

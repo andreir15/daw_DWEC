@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Window Colores</title>
+</head>
+<body>
+    <button onclick="abrir()">Abrir ventana</button>
+    <script>
+        var ventana;
+function abrir(){
+    ventana=window.open("","ventana","top=200,left=200,width=500,heigth=500");
+     ventana.document.open();
+     ventana.document.write("<select id='color'><option value='rojo'>Rojo</option><option value='verde'>Verde</option><option value='amarillo'>Amarillo</option><option value='azul'>Azul</option></select>");
+     ventana.document.write("<br><button onclick='cambiarColor()'>Modificar color</button><script>function cambiarColor(){var color=document.getElementById('color').value;switch(color){case 'rojo':document.bgColor='red';break; case 'amarillo':document.bgColor='yellow';break; case 'azul':document.bgColor='blue';break;case 'verde':document.bgColor='green';break;}}\<\/script>");
+     ventana.document.close();
+}
+    </script>
+</body>
+</html>

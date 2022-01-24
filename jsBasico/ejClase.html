@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Clase</title>
+</head>
+<body>
+  Nombre: <input type="text" id="nombre" />
+  <div id="miDiv"></div>
+  <br/>
+  Edad: <input type="text" id="edad"/>
+  <div id="miDiv2"></div>
+  <br/>
+  <input type="button" value="Validar" onclick="validar();"/>
+  <input type="button" value="Limpiar" onclick="limpiar();"/>
+  
+  <script>
+     
+      function validar(){
+        var nombre=document.getElementById("nombre").value;
+      var edad=document.getElementById("edad").value;
+        var texto="";
+        var texto2="";
+        var letras=/^['A-Z']+$/i;
+        var num=/['0-9']/i;
+        if((nombre.length<=25)&&(nombre.length>=3)){
+        for(i=0;i<nombre.length;i++){
+          var  recorrerNombre=nombre.charAt(i);
+          switch(nombre.charAt(i)){
+                   case 'á': recorrerNombre="a" ;break;
+                   case 'é':  recorrerNombre="e";break;
+                   case 'í': recorrerNombre='i';break;
+                   case 'ó': recorrerNombre='o';break;
+                   case 'ú':  recorrerNombre='u';break;
+                   case 'ñ':  recorrerNombre='n';break;
+                   case 'ç':  recorrerNombre='c';break;
+               }
+           if(recorrerNombre.match(letras)){
+               
+             texto="Todos los caracteres son correctos";
+             document.getElementById("miDiv").style.color="blue";
+
+           }else{
+             texto="Hay un error en el caracter numero "+i+" del texto";
+             document.getElementById("miDiv").style.color="red";
+           }
+       }
+      }
+    if(nombre.length>25){
+        texto="Error: El número de caracteres tiene que ser menor de 25";
+        document.getElementById("miDiv").style.color="red";
+    }if(nombre.length<3){
+        texto="Error: El número de caracteres tiene que ser mayor de 3";
+        document.getElementById("miDiv").style.color="red";
+    }
+    if(parseInt(edad)>=5&&parseInt(edad)<=110){
+      for(i=0;i<edad.length;i++){
+        var recorrerEdad=edad.charAt(i);
+        if(recorrerEdad.match(num)){
+               
+               texto2="Todos los caracteres son correctos";
+               document.getElementById("miDiv2").style.color="blue";
+  
+             }else{
+               texto2="Hay un error en el caracter numero "+i+" del texto";
+               document.getElementById("miDiv2").style.color="red";
+              }
+      }
+  
+    }else{
+      texto2="Error: La edad tiene que ser mayor de 5 y menor de 110 años";
+      document.getElementById("miDiv2").style.color="red";
+    }
+    document.getElementById("miDiv").innerHTML=texto;
+    document.getElementById("miDiv2").innerHTML=texto2;
+  }
+      function limpiar(){
+        texto="";
+        nombre.value="";
+        edad.value="";
+        texto2="";
+        document.getElementById("miDiv").innerHTML=texto;
+        document.getElementById("miDiv2").innerHTML=texto2;
+      }
+  </script> 
+</body>
+</html>

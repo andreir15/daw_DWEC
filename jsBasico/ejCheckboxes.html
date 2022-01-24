@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio checkboxes</title>
+</head>
+<body>
+    <form id="ejemploId" name="ejemploF">
+    <input type="checkbox" name="Aceptar" id="SiId" onclick="habilitar()">Si, quiero suscribirme
+    <br>
+    Selecciones sus temas de interés
+    <br>
+    <input type="checkbox" name="temas[]" value="Arte">Arte
+    <br>
+    <input type="checkbox" name="temas[]" value="Deporte">Deporte
+    <br>
+<input type="checkbox" name="temas[]" value="Musica">Musica
+</form>
+<script>
+     var temasC=document.ejemploF["temas[]"];
+    for(var i=0;i<temasC.length;i++){
+                temasC[i].disabled=true;
+
+        }
+    function habilitar(){
+        var aceptarC=document.ejemploF.Aceptar;
+        var temasC=document.ejemploF["temas[]"];
+        if (aceptarC.checked) {
+            for(var i=0;i<temasC.length;i++){
+                temasC[i].disabled=false;
+            }
+        }else{
+            for(var i=0;i<temasC.length;i++){
+                temasC[i].disabled=true;
+
+        }
+    }
+}
+
+</script>
+</body>
+</html>

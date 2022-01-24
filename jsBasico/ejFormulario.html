@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Formulario</title>
+</head>
+<body>
+    <fieldset>
+    <legend>Validar con submit</legend>
+    <form id="miFormulario" name="miFormulario" action="ejExpresionesRegulares.html" method="get" onsubmit="return validar()">
+     Nombre <input type="text" name="nombre" id="idNombre">
+     Hora<input type="text" name="hora" id="idHora">
+     <input type="submit" value="Validar">
+    </form>
+    </fieldset>
+    <br>
+    <fieldset>
+        <legend>Validar con button</legend>
+    <form id="miFormulario2" name="miFormulario2" action="ejExpresionesRegulares.html" method="get">
+        Nombre2 <input type="text" name="nombre2" id="idNombre2">
+        Hora2<input type="text" name="hora2" id="idHora2">
+        <input type="button" value="Validar2" onclick="validar2()">
+        <!--<button onclick="validar()">Validar2</button>-->
+         </form>
+    </fieldset>
+    <script>
+        function validar(){
+            var texto=miFormulario2.nombre2.value;
+            var texto2=miFormulario2.hora2.value;
+       
+         return true;
+       
+        }
+        function validar2(){
+            var texto=miFormulario2.nombre2.value;
+            var texto2=miFormulario2.hora2.value;
+       
+         miFormulario2.submit();
+       
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio radio colores</title>
+</head>
+<body>
+    <form id="ejemploId" name="ejemploF">
+        <input type="radio" name="colores1" value="Rojo" onclick="habilitar1('miDiv1','red')">
+       Rojo
+        <br>
+        <input type="radio" name="colores1" value="Azul" onclick="habilitar1('miDiv1','blue')">
+        Azul
+        <br>
+        <input type="radio" name="colores1" value="Amarillo" onclick="habilitar1('miDiv1','yellow')">
+        Amarillo
+        <br>
+        <input type="radio" name="colores1" value="Verde" onclick="habilitar1('miDiv1','green')">
+        Verde
+        <br>
+        <hr>
+        <input type="radio" name="colores1" value="Rosa" onclick="habilitar1('miDiv2','pink')">
+        Rosa
+         <br>
+         <input type="radio" name="colores1" value="Negro" onclick="habilitar1('miDiv2','black')">
+         Negro
+         <br>
+         <input type="radio" name="colores1" value="Amarillo" onclick="habilitar1('miDiv2','white')">
+         Blanco
+         <br>
+         <input type="radio" name="colores1" value="Verde" onclick="habilitar1('miDiv2','orange')">
+         Naranja
+         <br>
+    </form>
+    <hr>
+    <div id="miDiv1" style="height:200px; width:200px; border: 1px solid black;">
+    
+    </div>
+    <hr>
+    <div id="miDiv2" style="height:200px; width:200px;  border: 1px solid black;"></div>
+    <script>
+        function habilitar1(divNom,colorV){
+         document.getElementById(divNom).style.backgroundColor=colorV;
+    
+        }
+        /*
+        function habilitar2(colorV){
+         document.getElementById("2").style.backgroundColor=colorV;
+    
+        }*/
+    </script>
+</body>
+</html>

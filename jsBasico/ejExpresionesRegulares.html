@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio expresiones regulares</title>
+</head>
+<body>
+    Numero decimal<input type="text" id="textoDecimal">
+    <br>
+    Texto<input type="text" id="texto">
+    <br>
+    <input type="button" value="Validar" onclick="validar();">
+    <div id="miDiv"></div>
+    <script>
+    function validar(){
+        var letras=/^[a-zçñáéíóú]{3,28}$/;
+        var numeros=/^[0-9]{2,3}[.][0-9]{2,4}$/;
+        var texto=document.getElementById("textoDecimal").value;
+        var texto2=document.getElementById("texto").value;
+        texto2=texto2.toLowerCase();
+        if(numeros.test(texto)){
+            document.getElementById("miDiv").innerHTML="El numero decimal es correcto<br>";
+        }else{
+            document.getElementById("miDiv").innerHTML="El numero decimal NO es correcto<br>";
+
+        }
+        if(letras.test(texto2)){
+            document.getElementById("miDiv").innerHTML+="El texto es correcto";
+
+        }else{
+            document.getElementById("miDiv").innerHTML+="El texto NO es correcto";
+
+        }
+    }
+
+    </script>
+</body>
+</html>

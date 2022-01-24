@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+<body>
+    <script>
+        var frase="busco palabras con menos de cinco letras";   
+       var  palabras=frase.split(" ");
+        var contador=0;
+         //a
+        for(i=0;i<palabras.length;i++){
+if(palabras[i].length<5){
+    contador++;
+} 
+        }
+         document.write("El numero de palabras con menos de cinco letras es: "+contador+"<br/>");
+         //b
+contador=0;
+         for(i=0;i<palabras.length;i++){
+           
+if(palabras[i].includes("co")==true){
+    contador++;
+} 
+        }
+         document.write("Existen "+contador+ " palabras con la combinacion de letras 'co' <br/>");     
+         //c
+        
+         for(i=0;i<palabras.length;i++){
+    
+               var frasePepe=frase.replace("co","Pepe");
+           
+                   }
+                   document.write(frasePepe+ "<br/>");  
+         //d 
+         for(i=0;i<palabras.length;i++){
+            var fraseO=frase.replace(/a/g,"o");
+           
+                   }
+                   document.write(fraseO+ "<br/>");  
+         //e
+         var fraseLetrasSeparadas=""; 
+         for(i=0;i<frase.length;i++){
+             
+         fraseLetrasSeparadas+=frase.charAt(i)+",";    
+
+        }
+        document.write(fraseLetrasSeparadas+ "<br/>");  
+        
+         //f
+         var diezPrimerasLetras=frase.slice(0,11);
+         var frasePrimerasLetrasSeparadas="";
+         var restoLetras=frase.slice(11,frase.length);
+         for(i=0;i<diezPrimerasLetras.length;i++){
+             
+           frasePrimerasLetrasSeparadas+=diezPrimerasLetras.charAt(i)+" ";    
+    
+            }
+         document.write(frasePrimerasLetrasSeparadas+ restoLetras); 
+
+       
+    </script>
+</body>
+</html>

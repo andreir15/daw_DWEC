@@ -1,0 +1,38 @@
+ej<!--Pedir un numero y si ese numero es divisible por algun numero primo menor de 10-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Ejercicio 4</title>
+
+</head>
+
+<body>
+
+   <script>
+   	 function calcular(){
+	 var a=parseInt(document.getElementById("n").value);
+    var texto="";
+	if ((a%2)==0){
+	texto="El numero "+a+" es divisible entre 2";
+	   }
+	     else if ((a%3)==0){
+	texto="El numero "+a+" es divisible entre 3";
+	}
+	     else if ((a%5)==0){
+	texto="El numero "+a+" es divisible entre 5";
+	}
+	     else if ((a%7)==0){
+	texto="El numero "+a+" es divisible entre 7";
+	}
+		else {texto="El numero "+a+" NO es divisible por ningun numero primo menor de 10";}
+	document.getElementById("miDiv").innerHTML=texto;
+	}
+	</script>
+	Introduzca un numero:
+ <input type="text" id="n"/><br><br>
+ <input type="button" value="Mostrar" onclick="calcular();"/><br><br>
+   <div id="miDiv"></div>
+ 
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio formulario 3</title>
+</head>
+<body>
+    <form name="login" onsubmit="validar()">
+    Usuario:
+    <input type="text" id="usuarioId" name="usuario">
+    <br>
+    Clave: <input type="password" id="claveId" name="clave" disabled="disabled">
+    <br>
+    <input type="submit" value="Validar" disabled="disabled" id="validarId" onclick="validar()">
+    </form>
+
+    <script>
+     var usuarioCorrecto="usuario";
+     var claveCorrecta="12345";
+     var cont=0;
+     document.getElementById("usuarioId").onkeyup=function(){document.getElementById("claveId").disabled=false;}
+     document.getElementById("claveId").onkeyup=function(){document.getElementById("validarId").disabled=false;}
+     
+     function validar(){
+        var usuario=document.getElementById("usuarioId").value;
+        var clave=document.getElementById("claveId").value;
+        if((usuario!=usuarioCorrecto)||(clave!=claveCorrecta)){
+            if(cont<3){
+            cont++;
+            alert("Lleva "+cont+" intentos. Le quedan "+(3-cont)); 
+        return false;  
+        }else{
+         login.method="post";
+         login.action="ejFormulario.html";
+         login.target="_blank";
+        }
+         
+     }
+     else{
+         login.method="get";
+         login.action="https://www.google.com"
+         login.target="_blank";
+         intentos=0;
+         return true;
+
+     }
+     }
+
+
+    </script>
+</body>
+</html>

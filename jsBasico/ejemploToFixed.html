@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo ToFixed</title>
+</head>
+<body>
+    <script>
+        function numeros(){
+            var resultado="";
+            var numeros=5.56789;
+            var num=3.23;
+            var n=numeros.toFixed(4);//Para mostrar 4 decimales aproximados
+            var n2=numeros.toPrecision(4);//Para mostrar 4 digitos
+            var n3=numeros.toExponential(4);
+            var n4=numeros.toString();
+           var salida="num=3.23 es numerico"+!isNaN(num)+"<br>";
+            console.log(n);
+            console.log(n2)
+            console.log(n3);
+            console.log(n4);
+            resultado="Aplicando toFixed()= "+n+"---------------- Aplicando toPrecision()= "+n2;
+            resultado+="<br/>Aplicando toExponencial()= "+n3+"------------------ Aplicando toString()= "+n4;
+            document.getElementById("miDiv").innerHTML=resultado;
+        }
+    </script>
+    <h1 onclick="numeros();">Ejemplo Number</h1>
+    <div id="miDiv"></div>
+</body>
+</html>

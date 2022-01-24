@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio fechas</title>
+</head>
+<body>
+    <script>
+//a) Crear la variable "fechaHoy" con fecha de hoy y mostrarla
+var fechaHoy=new Date();
+document.write(fechaHoy+"<br/>");
+
+//b) Crear la variable "fecha85" que sume 85 dias a la variable "fechaHoy" y mostrarla
+var fecha85=new Date(fechaHoy);
+fecha85.setDate(fecha85.getDate()+85);
+document.write(fecha85+"<br/>");
+
+//c) Crear la variable "fecha187" que reste 187 dias a la variable "fechaHoy" y mostrarla
+var fecha187=new Date(fechaHoy);
+fecha187.setDate(fecha187.getDate()-187);
+document.write(fecha187+"<br/>");
+
+//d) Sumar 2 años a la variable "fecha85" y mostrarla
+fecha85.setFullYear(fecha85.getFullYear()+2);
+document.write(fecha85+"<br/>");
+
+//e) Restar 24 horas a la variable "187" y mostrarla
+fecha187.setDate(fecha187.getDate()-1);
+document.write(fecha187+"<br/>");
+
+//f)Crear la variable "fechaResto" que sea la resta de 
+//fecha85-fecha187 y observa lo que obtienes y motrarla 
+var fechaResto=new Date(fecha85-fecha187);
+document.write(fechaResto);
+
+    </script>
+</body>
+</html>

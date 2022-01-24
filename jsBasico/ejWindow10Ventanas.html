@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Window multiple 10 Ventanas</title>
+</head>
+<body>
+    <button onclick="abrir()">Abrir ventana</button>
+    <script>
+        
+
+        function abrir(){
+            var distancia=10;
+            for(i=1;i<=10;i++){
+                var ventana;
+               
+             ventana=window.open("","ventana"+i,"width=200,height=200,top="+(distancia+(i*15))+",left="+(distancia+(i*20)));
+            
+             ventana.document.open();
+             ventana.document.write("<title>Ventana "+i+"</title><body>Ventana "+i+"</body>");
+             ventana.document.write("<br><button onclick='window.close()'>Cerrar ventana</button><script>setTimeout('window.close',5000);\<\/script>");
+             ventana.document.close();
+             
+             
+            }
+        }
+        </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!--Mostrar en san fernando de henares el dia de la semana en formato texto
+,dia del mes, mes, año, hora,min y segundos(todo en formato texto)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio fechas 2</title>
+</head>
+<body>
+  <script> 
+      var fecha=new Date();
+      var texto="";
+      dia=fecha.getDay();
+      switch(dia){
+          case 1:texto= "lunes";break;
+          case 2:texto=  "martes";break;
+          case 3:texto=  "miercoles";break;
+          case 4:texto=  "jueves";break;
+          case 5:texto=  "viernes";break;
+          case 6:texto=  "sabado";break;
+          case 0: texto= "domingo";break;
+      }
+      var texto2="";
+      mes=fecha.getMonth();
+      switch(mes){
+          case 8:texto2= "septiembre";break;
+          case 9:texto2=  "octubre";break;
+        
+      }
+      document.write("En San Fernando de Henares el "+texto+" a "+fecha.getDate()+" de "+texto2
+      +" de "+fecha.getFullYear()+" a las "+fecha.getHours()+" horas, "+fecha.getMinutes()+" minutos, "+fecha.getSeconds()+" segundos");
+  </script>  
+
+</body>
+</html>

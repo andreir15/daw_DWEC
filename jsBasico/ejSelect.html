@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio select</title>
+</head>
+<body>
+    <form name="miForm" target="_blank">
+    <select name="miSelect">
+        <option value="0">[seleccione una opción]</option>
+        <option value="1">Opción 1</option>
+        <option value="2">Opción 2</option>
+        <option value="3">Opción 3</option>
+        <input type="button" value="Enviar" onclick="enviar()">
+        
+    </select>
+</form>
+<script>
+    function enviar(){
+        if(document.miForm.miSelect.options[miForm.miSelect.selectedIndex].value!="0"){
+        miForm.submit();
+        }else{
+         alert("Seleccione una opción valida");
+        }
+    }
+</script>
+</body>
+</html>

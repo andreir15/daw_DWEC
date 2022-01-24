@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Reloj</title>
+</head>
+<body>
+   
+    <input type="button" value="Iniciar reloj" id="iniciarReloj" onclick="a2=setInterval(calcular2, 1000);"/>
+    <input type="button" value="Parar" id="parar" onclick="pararIntervalo();"/>
+    <var id="miDiv"></var>
+    <script>
+         function calcular2(){
+        var reloj=new Date();
+        var texto="";
+        var hora=reloj.getHours();
+        var min=reloj.getMinutes();
+        var sec=reloj.getSeconds();
+        if(hora<10)
+            hora="0"+hora;
+            if(min<10)
+            min="0"+min;
+            if(sec<10)
+            sec="0"+sec;
+    texto+="<br/>"+hora+":"+min+":"+sec;  
+      
+    document.getElementById("miDiv").innerHTML=texto;
+    document.getElementById("iniciarReloj").disabled=true;     
+    document.getElementById("parar").disabled=false;        
+        }
+        function pararIntervalo(){
+            clearInterval(a2);
+            document.getElementById("iniciarReloj").disabled=false     
+    document.getElementById("parar").disabled=true;        
+        }
+
+        </script>
+</body>
+</html>

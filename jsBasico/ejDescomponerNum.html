@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Descomponer Numeros</title>
+</head>
+<body>
+    Dime un numero:
+    <input type="text" id="num"/><br><br>
+    <input type="button" value="Aceptar" onclick="calcular();"/>
+  <div id="miDiv"></div>
+  <script>
+     
+      function calcular(){
+        var a=parseInt(document.getElementById("num").value);
+      var texto="";
+      var divisor=2;
+      var dividendo=a;
+      while(divisor<=a){
+        if(dividendo%divisor!=0){
+        divisor++; 
+      }
+      else{
+          texto+=divisor;
+          dividendo=dividendo/divisor;
+if(dividendo!=1){
+    texto+=" x ";
+}
+      }
+    }document.getElementById("miDiv").innerHTML=texto;
+}
+
+    </script>
+</body>
+</html>

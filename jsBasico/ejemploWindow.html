@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Window</title>
+</head>
+<body>
+     Introduzca el nombre de la ventana<input type="text" id="nombre"/>
+    <p>Haga click en los botones para abrir las ventanas</p>
+    <button onclick="miFuncion()">Pulse para abrir ventana</button>
+    <button onclick="miFuncion2()">Pulse para reemplazar la ventana actual</button>
+    <br/>
+    <button onclick="miFuncion3()">Pulse para abrir nueva ventana</button>
+    <button onclick="miFuncion4()">Pulse para abrir varias ventanas</button>
+    <button onclick="miFuncion5()">Pulse para abrir nueva ventana con nombre</button>
+    <br/>   
+    <button onclick="abrir()">Abrir nueva ventana</button>
+    <button onclick="cerrar()">Cerrar nueva ventana</button>
+    <script>
+        var varVentana;
+        function abrir(){
+        varVentana=window.open("","miVentana","top=300,left=300,width=500,heigth=400");
+        varVentana.document.open();
+        varVentana.document.write("<p>Esta es mi ventana</p>");
+        varVentana.document.write("<button onclick='window.close()'>Cerrar nueva ventana</button>");
+        varVentana.document.close();       
+    }
+        function cerrar(){
+       varVentana.close();
+    }
+    </script>
+<script>
+    function miFuncion(){
+        var ventana=window.open("https://www.nasa.es","_blank","top=500,left=500,width=400,height=400");
+    
+    }
+    function miFuncion2(){
+        var ventana=window.open("","_self");
+    ventana.document.open();
+    ventana.document.write("<p> Voy a reemplazar la ventana actual</p>");
+    ventana.document.close();
+    }
+    function miFuncion3(){
+        var ventana=window.open("","ventana","width=600,heigth=600");
+    ventana.document.open();
+    ventana.document.write("<p>Esta es mi 'ventana', tengo 600px de ancho y de alto</p>");
+    ventana.document.close();
+    }
+    function miFuncion4(){
+        window.open("https://www.google.es");
+        window.open("https://www.w3schools.com","_blank","top=300,left=300,width=600,height=600");
+    }
+    function miFuncion5(){
+        var texto=document.getElementById("nombre").value;
+        var nuevaVentana=window.open("",texto,"");
+        nuevaVentana.document.open();
+        nuevaVentana.document.write("<title>"+texto+"</title>");
+        nuevaVentana.document.write("<h1>"+texto+"</h1>");
+        nuevaVentana.document.close();
+    }
+</script>    
+</body>
+</html>

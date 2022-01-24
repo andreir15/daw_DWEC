@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Array Numeros</title>
+</head>
+<body>
+ 
+    <script>
+       var accion="";
+     var numeros=[0,1,3,2,5,4,7,6,8,9];
+     var valor=numeros.indexOf(5);
+     function primerElemento(){
+    valor=numeros.indexOf(0);
+    document.getElementById("numero").value=valor;
+     }
+     function ultimoElemento(){
+     valor=numeros.indexOf(numeros.length-1);
+     document.getElementById("numero").value=valor;
+     }
+     function anterior(){
+       if(valor!=numeros.indexOf(0)){
+         valor=numeros.indexOf(valor-1);
+         document.getElementById("numero").value=valor;
+       }
+     }
+     function siguiente(){
+        if(valor!=numeros.indexOf(numeros.length-1)){
+         valor=numeros.indexOf(valor+1);
+         document.getElementById("numero").value=valor;
+       }
+     }
+     function alta(){
+      accion="ALTA";
+       document.getElementById("aceptar").disabled=false;
+       document.getElementById("anterior").disabled=true;
+       document.getElementById("primero").disabled=true;
+       document.getElementById("siguiente").disabled=true;
+       document.getElementById("ultimo").disabled=true;
+       document.getElementById("baja").disabled=true;
+       document.getElementById("modificar").disabled=true;
+       document.getElementById("listado").disabled=true;
+     }
+     function baja(){
+      accion="BAJA";
+      document.getElementById("aceptar").disabled=false;
+      document.getElementById("alta").disabled=true;
+      document.getElementById("modificar").disabled=true;
+       document.getElementById("listado").disabled=true;
+     }
+  
+     function aceptar(){
+      document.getElementById("aceptar").disabled=true;
+       document.getElementById("anterior").disabled=false;
+       document.getElementById("primero").disabled=false;
+       document.getElementById("siguiente").disabled=false;
+       document.getElementById("ultimo").disabled=false;
+       document.getElementById("alta").disabled=false;
+       document.getElementById("baja").disabled=false;
+       document.getElementById("modificar").disabled=false;
+       document.getElementById("listado").disabled=false;
+      
+
+      if(accion=="ALTA"){
+         var nuevoNum=parseInt(document.getElementById("numero").value);
+         numeros.push(nuevoNum);
+         alert(numeros);
+      }
+      else if(accion=="BAJA"){
+        var posicion=numeros.indexOf(valor);    
+        numeros.splice(posicion,1);
+        alert(numeros);
+      }
+       else if(accion="MODIFICAR"){
+        var numModificar=parseInt(document.getElementById("numero").value);
+      var pos=numeros.indexOf(valor);
+      var primeraMitad=numeros.slice(0,pos);
+      var segundaMitad=numeros.slice(pos+1,numeros.length-1);
+      primeraMitad.push(numModificar);
+      numeros=primeraMitad.concat(segundaMitad);
+      alert(numeros);
+       }
+     }
+     function modificar(){
+       accion="MODIFICAR";
+       document.getElementById("aceptar").disabled=false;
+       document.getElementById("anterior").disabled=true;
+       document.getElementById("primero").disabled=true;
+       document.getElementById("siguiente").disabled=true;
+       document.getElementById("ultimo").disabled=true;
+       document.getElementById("alta").disabled=true;
+       document.getElementById("baja").disabled=true;
+       document.getElementById("modificar").disabled=true;
+       document.getElementById("listado").disabled=true;
+
+     }
+     var ventana;
+     function listado(){
+      ventana=window.open("","ventana","width=500,height=500,top=250,left=250");
+      ventana.document.open();
+      ventana.document.write("ARRAY<br><input type='text' disabled value='"+numeros+"'/>"+
+      "<br>ORDENADO ASCENDENTE<br><input type='text' disabled value='"+numeros.sort(function(a,b){return a-b})+"'/>"+
+      "<br>ORDENADO DESCENDENTE<br><input type='text' disabled value='"+numeros.sort(function(a,b){return b-a})+"'/>"+
+      "<br><input type='button' value='Cerrar' onclick='window.close()'/><br>");
+      ventana.document.write("<table border='1'<tr><th>ARRAY</th><th>ASCENDENTE</th><th>DESCENDENTE</th></tr>");
+        for( var i=0; i<numeros.length; i++ ){
+          ventana.document.write("<tr><td>"+numeros[i]+"</td>"+
+         "<td>"+numeros.sort(function(a,b){return a-b})[i]+"</td>"+
+          "<td>"+numeros.sort(function(a,b){return b-a})[i]+"</td></tr>");
+          }
+          ventana.document.write("</table>");
+      ventana.document.close();
+     }
+
+     document.write("Numero <input type='text' id='numero' value='"+valor+"'/><br>");
+    </script>
+     <input type="button" value="|<<" id="primero" onclick="primerElemento();"/>
+     <input type="button" value="<" id="anterior" onclick="anterior();"/>
+     <input type="button" value=">" id="siguiente" onclick="siguiente();"/>
+     <input type="button" value=">>|" id="ultimo" onclick="ultimoElemento();"/>
+     <br>
+     <input type="button" value="ALTA" id="alta" onclick="alta();"/>
+     <input type="button" value="BAJA" id="baja" onclick="baja();"/>
+     <input type="button" value="MODIFICACION" id="modificar" onclick="modificar();"/>
+     <input type="button" value="LISTADO" id="listado" onclick="listado();"/>
+     <br>
+     <input type="button" value="ACEPTAR" id="aceptar" disabled="disabled" onclick="aceptar();"/>
+     <br>
+     <script>
+     document.write("ORDENADO ASCENDENTE<br><input type='text' disabled value='"+numeros.sort(function(a,b){return a-b})+"'/>"+
+      "<br>ORDENADO DESCENDENTE<br><input type='text' disabled value='"+numeros.sort(function(a,b){return b-a})+"'/>");
+     numeros.sort();    
+    </script>
+     
+      </body>
+</html>

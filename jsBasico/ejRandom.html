@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numeros aleatorios</title>
+</head>
+<body>
+  Menor<input type="text" id="menor"/><br/>
+  Mayor <input type="text" id="mayor"/>
+  <input type="button" value="Generar" onclick="calcular();"/>
+  <div id="miDiv"></div>
+  <script>
+      var texto="";
+      
+      function calcular(){
+      var menor=parseInt(document.getElementById("menor").value);
+      var mayor=parseInt(document.getElementById("mayor").value);
+     
+        for(i=1;i<=5;i++){
+    
+ var num=Math.floor((Math.random()*(mayor-menor+1))+menor);
+texto+="Numero random "+i+"="+num+"<br/>";
+
+}document.getElementById("miDiv").innerHTML=texto;
+      }
+  </script>
+</body>
+</html>
